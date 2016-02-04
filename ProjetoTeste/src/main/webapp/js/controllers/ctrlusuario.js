@@ -5,9 +5,9 @@ var app = angular.module('ngdemo');
 angular.module('ngdemo.ctrlUsuario', [])
         .controller('ControllerUsuario', ControllerUsuario)
 
-ControllerUsuario.$inject = ['$scope', '$location', 'Restangular'];
+ControllerUsuario.$inject = ['$scope', 'Restangular'];
 
-function ControllerUsuario($scope, $location, Restangular) {
+function ControllerUsuario($scope, Restangular) {
 
     init();
     atualizaLista();
@@ -15,19 +15,16 @@ function ControllerUsuario($scope, $location, Restangular) {
     function init() {
         $scope.paginas = 5;
         setarLinhas($scope.paginas);
-    }
-    ;
-
+    };
+    
     function setarLinhas(num) {
         if (num == 'Todas') {
-            console.log($scope.users.length);
             num = $scope.users.length;
-        }
-        ;
+        };
+        
         $scope.entryLimit = num;
-    }
-    ;
-
+    };
+    
     $scope.ordenarPor = function (coluna) {
         $scope.criterioDeOrdenacao = coluna;
         $scope.direcaoDaOrdenacao = !$scope.direcaoDaOrdenacao;
